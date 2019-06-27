@@ -18,6 +18,7 @@ const LoginForm = (props) => {
             .then(() => props.history.push("/user_home"))
             .catch(err => {
                 setErrorMessage(err.response.data.message)
+                clearInputs()
             })
             // call clearInputs?
     }

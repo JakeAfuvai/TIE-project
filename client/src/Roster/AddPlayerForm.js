@@ -6,7 +6,6 @@ const AddPlayerForm = props => {
     const [firstname, setFirstname] = useState("")
     const [lastname, setLastname] = useState("")
     const [grade, setGrade] = useState("Senior")
-    const [position, setPosition] = useState([])
     const [ol, setol] = useState(false)
     const [qb, setqb] = useState(false)
     const [rb, setrb] = useState(false)
@@ -19,23 +18,33 @@ const AddPlayerForm = props => {
     const [k, setk] = useState(false)
     const [p, setp] = useState(false)
 
-    const olStyle = ol ? {background: "limegreen"} : null
-    const qbStyle = qb ? {background: "limegreen"} : null
-    const rbStyle = rb ? {background: "limegreen"} : null
-    const teStyle = te ? {background: "limegreen"} : null
-    const wrStyle = wr ? {background: "limegreen"} : null
-    const dlStyle = dl ? {background: "limegreen"} : null
-    const lbStyle = lb ? {background: "limegreen"} : null
-    const dbStyle = db ? {background: "limegreen"} : null
-    const lsStyle = ls ? {background: "limegreen"} : null
-    const kStyle = k ? {background: "limegreen"} : null
-    const pStyle = p ? {background: "limegreen"} : null
+    const olStyle = ol ? {background: "limegreen", transition: "0.3s"} : null
+    const qbStyle = qb ? {background: "limegreen", transition: "0.3s"} : null
+    const rbStyle = rb ? {background: "limegreen", transition: "0.3s"} : null
+    const teStyle = te ? {background: "limegreen", transition: "0.3s"} : null
+    const wrStyle = wr ? {background: "limegreen", transition: "0.3s"} : null
+    const dlStyle = dl ? {background: "limegreen", transition: "0.3s"} : null
+    const lbStyle = lb ? {background: "limegreen", transition: "0.3s"} : null
+    const dbStyle = db ? {background: "limegreen", transition: "0.3s"} : null
+    const lsStyle = ls ? {background: "limegreen", transition: "0.3s"} : null
+    const kStyle = k ? {background: "limegreen", transition: "0.3s"} : null
+    const pStyle = p ? {background: "limegreen", transition: "0.3s"} : null
 
     const clearState = () => {
         setFirstname("")
         setLastname("")
         setGrade("Senior")
-        setPosition([])
+        setol(false)
+        setqb(false)
+        setrb(false)
+        sette(false)
+        setwr(false)
+        setdl(false)
+        setlb(false)
+        setdb(false)
+        setls(false)
+        setk(false)
+        setp(false)
     }
 
     const handleModalLogic = () => {
@@ -57,12 +66,6 @@ const AddPlayerForm = props => {
         ls && playerPositions.push("LS")
         k && playerPositions.push("K")
         p && playerPositions.push("P")
-        
-        console.log(playerPositions, position)
-
-        //why not setting state????????????
-        setPosition(playerPositions)
-        console.log(position)
 
         let newPlayer = {
             lastname,
@@ -71,25 +74,25 @@ const AddPlayerForm = props => {
             position: playerPositions
         }
         props.addPlayer(newPlayer)
-        console.log(firstname, lastname, grade, position, newPlayer)
 
         clearState()
         newPlayer = {}
         playerPositions = []
-        console.log(firstname, lastname, grade, position, newPlayer)
         
         props.handleAddPlayerModal()
         props.getPlayers()
     }
 
     const submitNewPlayer = firstname !== "" && lastname !== "" && grade !== "" ?
-        <button>Add {firstname} {lastname} to Roster</button>
+        <div className="add-btn-container"><button className="add-btn">Add {firstname} {lastname} to Roster</button></div>
         :
-        <h3>Enter at Least First Name, Last Name and Grade to Submit Player to Roster</h3>
+        <h3 style={{color: "red", textAlign: "center", padding: "8pt 0"}}>Required: First Name, Last Name and Grade</h3>
 
     return (
         <form name="addPlayerForm" className="add-player-form-container" onSubmit={handleSubmit}>
-            <div onClick={handleModalLogic}>X</div>
+            <div className="close-btn-container" onClick={handleModalLogic}>
+                <p className="close-btn">X</p>
+            </div>
             <div className="player-name-container">
                 <h2>Player Name</h2>
                 <input 
@@ -112,8 +115,8 @@ const AddPlayerForm = props => {
                 />
             </div>
             <div className="radio-container">
-                <h2>Grade</h2>
-                <label>Senior
+                <h2>Grade <span>*Senior selected by default</span></h2>
+                <label>
                     <input 
                         id="grade-input"
                         type="radio"
@@ -121,81 +124,93 @@ const AddPlayerForm = props => {
                         value="Senior"
                         checked={grade === "Senior"}
                         onChange={e => setGrade(e.target.value)}
-                    />
-                </label>
-                <label>Junior
+                    /> Senior
+                </label> 
+                <label>
                     <input 
                         type="radio"
                         name="grade"
                         value="Junior"
                         checked={grade === "Junior"}
                         onChange={e => setGrade(e.target.value)}
-                    />
+                    /> Junior
                 </label>
-                <label>Sophomore
+                <label>
                     <input 
                         type="radio"
                         name="grade"
                         value="Sophomore"
                         checked={grade === "Sophomore"}
                         onChange={e => setGrade(e.target.value)}
-                    />
+                    /> Sophomore
                 </label>
-                <label>Freshman
+                <label>
                     <input 
                         type="radio"
                         name="grade"
                         value="Freshman"
                         checked={grade === "Freshman"}
                         onChange={e => setGrade(e.target.value)}
-                    />
+                    /> Freshman
                 </label>
             </div>
+            <h2 className="position-title">Position(s) <span>select all that apply</span></h2>
             <div className="position-container">
-                <h4>OFFENSE</h4>
+                <h4 id="offense">OFFENSE</h4>
                 <div
+                    id="ol"
                     style={olStyle}
                     onClick={() => setol(!ol)}
                 >OL</div>
                 <div
+                    id="qb"
                     style={qbStyle}
                     onClick={() => setqb(!qb)}
                 >QB</div>
                 <div
+                    id="rb"
                     style={rbStyle}
                     onClick={() => setrb(!rb)}
                 >RB</div>
                 <div
+                    id="te"
                     style={teStyle}
                     onClick={() => sette(!te)}
                 >TE</div>
                 <div
+                    id="wr"
                     style={wrStyle}
                     onClick={() => setwr(!wr)}
                 >WR</div>
-                <h4>DEFENSE</h4>
+                <h4 id="defense">DEFENSE</h4>
                 <div
+                    id="dl"
                     style={dlStyle}
                     onClick={() => setdl(!dl)}
                 >DL</div>
                 <div
+                    id="lb"
                     style={lbStyle}
                     onClick={() => setlb(!lb)}
                 >LB</div>
                 <div
+                    id="db"
                     style={dbStyle}
                     onClick={() => setdb(!db)}
                 >DB</div>
-                <h4>SPECIAL TEAMS</h4>
+                <h4 id="special-teams">SPECIAL TEAMS</h4>
                 <div
+                    id="ls"
                     style={lsStyle}
                     onClick={() => setls(!ls)}
                 >LS</div>
                 <div
+                    id="k"
                     style={kStyle}
                     onClick={() => setk(!k)}
                 >K</div>
                 <div
+                    id="p"
                     style={pStyle}
                     onClick={() => setp(!p)}
                 >P</div>

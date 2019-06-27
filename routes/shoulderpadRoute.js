@@ -27,7 +27,7 @@ shoulderpadRouter.route("/")
 
     shoulderpadRouter.route("/:_id")
         .get((req, res, next) => {
-            Shoulderpad.findOne({ _id: req.params.shoulderpadId, user: req.user._id }, (err, shoulderpad) => {
+            Shoulderpad.findOne({ _id: req.params._id, user: req.user._id }, (err, shoulderpad) => {
                 if (err) {
                     res.status(500)
                     return next(err)
@@ -40,7 +40,7 @@ shoulderpadRouter.route("/")
         })
 
         .put((req, res, next) => {
-            Shoulderpad.findOneAndUpdate({ _id: req.params.shoulderpadId, user: req.user._id }, req.body, { new: true }, (err, shoulderpad) => {
+            Shoulderpad.findOneAndUpdate({ _id: req.params._id, user: req.user._id }, req.body, { new: true }, (err, shoulderpad) => {
                 if (err) {
                     console.log("Error")
                     res.status(500)
@@ -51,7 +51,7 @@ shoulderpadRouter.route("/")
         })
 
         .delete((req, res, next) => {
-            Shoulderpad.findOneAndRemove({ _id: req.params.shoulderpadId, user: req.user._id }, (err, shoulderpad) => {
+            Shoulderpad.findOneAndRemove({ _id: req.params._id, user: req.user._id }, (err, shoulderpad) => {
                 if (err) {
                     res.status(500)
                     return next(err)

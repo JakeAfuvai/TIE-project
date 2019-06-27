@@ -5,11 +5,15 @@ import Player from "./Player"
 import "./Roster.css"
 
 const Roster = props => {
-    const {getPlayers} = props
+    const {getPlayers, getHelmets} = props
 
     useEffect(() => {
         getPlayers()
     }, [getPlayers])
+
+    useEffect(() => {
+        getHelmets()
+    }, [getHelmets])
     
     const [showAddPlayerModal, setShowAddPlayerModal] = useState(false)
     const showModalClass = showAddPlayerModal ? "" : "no-display"
@@ -26,7 +30,8 @@ const Roster = props => {
             <h1>ROSTER</h1>
             <button onClick={handleModalLogic}>ADD PLAYER</button>
             <Player 
-                roster={props.players}  
+                roster={props.players}
+                stateHelmets={props.helmets}
             />
         </div>
     )

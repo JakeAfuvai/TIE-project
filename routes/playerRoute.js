@@ -27,7 +27,7 @@ playerRouter.route("/")
 
     playerRouter.route("/:_id")
         .get((req, res, next) => {
-            Player.findOne({ _id: req.params.playerId, user: req.user._id }, (err, player) => {
+            Player.findOne({ _id: req.params._id, user: req.user._id }, (err, player) => {
                 if (err) {
                     res.status(500)
                     return next(err)
@@ -40,7 +40,7 @@ playerRouter.route("/")
         })
 
         .put((req, res, next) => {
-            Player.findOneAndUpdate({ _id: req.params.playerId, user: req.user._id }, req.body, { new: true }, (err, player) => {
+            Player.findOneAndUpdate({ _id: req.params._id, user: req.user._id }, req.body, { new: true }, (err, player) => {
                 if (err) {
                     console.log("Error")
                     res.status(500)
@@ -51,7 +51,7 @@ playerRouter.route("/")
         })
 
         .delete((req, res, next) => {
-            Player.findOneAndRemove({ _id: req.params.playerId, user: req.user._id }, (err, player) => {
+            Player.findOneAndRemove({ _id: req.params._id, user: req.user._id }, (err, player) => {
                 if (err) {
                     res.status(500)
                     return next(err)

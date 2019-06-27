@@ -81,13 +81,13 @@ export class AppContextProvider extends Component {
             })
     }
 
-    // getPlayer = playerId => {
-    //     return tieAxios.get(`/api/player/${playerId}`)
-    //         .then(response => {
-    //             this.setState({ player: response.data });
-    //             return response;
-    //         })
-    // }
+    getPlayer = playerId => {
+        return tieAxios.get(`/api/player/${playerId}`)
+            .then(response => {
+                this.setState({ player: response.data });
+                return response;
+            })
+    }
     getPlayerCardInfo = playerId => {
         const foundPlayer = this.state.players.find(player => player._id === playerId)
         console.log(foundPlayer.showModal, foundPlayer._id)
@@ -102,23 +102,24 @@ export class AppContextProvider extends Component {
         console.log(foundPlayer.showModal, foundPlayer._id)
         this.setState({ player: {} })
     }
-    // getHelmet = helmetId => {
-    //     return tieAxios.get(`/api/helmet/${helmetId}`)
-    //         .then(response => {
-    //             this.setState({ helmet: response.data });
-    //             return response;
-    //         })
-    // }
-    // getShoulderpad = shoulderpadId => {
-    //     return tieAxios.get(`/api/shoulderpad/${shoulderpadId}`)
-    //         .then(response => {
-    //             this.setState({ shoulderpad: response.data });
-    //             return response;
-    //         })
-    // }
+    getHelmet = helmetId => {
+        return tieAxios.get(`/api/helmet/${helmetId}`)
+            .then(response => {
+                this.setState({ helmet: response.data });
+                return response;
+            })
+    }
+    getShoulderpad = shoulderpadId => {
+        return tieAxios.get(`/api/shoulderpad/${shoulderpadId}`)
+            .then(response => {
+                this.setState({ shoulderpad: response.data });
+                return response;
+            })
+    }
 
-    editPlayer = (playerID, player) => {
-        return tieAxios.put(`/api/player/${playerID}`, player)
+    editPlayer = (playerId, player) => {
+        console.log("fired", playerId, player)
+        return tieAxios.put(`/api/player/${playerId}`, player)
             .then(response => {
                 this.setState(prevState => {
                     const updatedPlayers = prevState.players.map(player => {
@@ -129,8 +130,9 @@ export class AppContextProvider extends Component {
                 return response;
             })
     }
-    editHelmet = (helmetID, helmet) => {
-        return tieAxios.put(`/api/helmet/${helmetID}`, helmet)
+    editHelmet = (helmetId, helmet) => {
+        console.log("fired", helmetId, helmet)
+        return tieAxios.put(`/api/helmet/${helmetId}`, helmet)
             .then(response => {
                 this.setState(prevState => {
                     const updatedHelmets = prevState.helmets.map(helmet => {
@@ -237,7 +239,6 @@ export class AppContextProvider extends Component {
             token: ""
         })
     }
-
     render() {
         return (
             <AppContext.Provider

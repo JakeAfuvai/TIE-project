@@ -27,7 +27,7 @@ helmetRouter.route("/")
 
     helmetRouter.route("/:_id")
         .get((req, res, next) => {
-            Helmet.findOne({ _id: req.params.helmetId, user: req.user._id }, (err, helmet) => {
+            Helmet.findOne({ _id: req.params._id, user: req.user._id }, (err, helmet) => {
                 if (err) {
                     res.status(500)
                     return next(err)
@@ -40,18 +40,19 @@ helmetRouter.route("/")
         })
 
         .put((req, res, next) => {
-            Helmet.findOneAndUpdate({ _id: req.params.helmetId, user: req.user._id }, req.body, { new: true }, (err, helmet) => {
+            Helmet.findOneAndUpdate({ _id: req.params._id, user: req.user._id }, req.body, { new: true }, (err, helmet) => {
                 if (err) {
                     console.log("Error")
                     res.status(500)
                     return next(err)
                 }
+                console.log(helmet)
                 return res.send(helmet)
             })
         })
 
         .delete((req, res, next) => {
-            Helmet.findOneAndRemove({ _id: req.params.helmetId, user: req.user._id }, (err, helmet) => {
+            Helmet.findOneAndRemove({ _id: req.params._id, user: req.user._id }, (err, helmet) => {
                 if (err) {
                     res.status(500)
                     return next(err)
