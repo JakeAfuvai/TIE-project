@@ -15,10 +15,7 @@ const playerSchema = new Schema({
         required: true,
         enum: ["Senior", "Junior", "Sophomore", "Freshman"]
     },
-    position: {
-        type: String,
-        default: "No Set Position"
-    },
+    position: Array,
     image: {
         type: String,
         default: ""
