@@ -25,7 +25,7 @@ const Player = props => {
         // .sort((a,b) => a.shoulderpadNumber.localeCompare(b.shoulderpadNumber))
         // .sort((a,b) => a.size.localeCompare(b.size))
 
-    const handleAssignHelmet = (playerId, helmetString) => {
+    const handleAssignHelmet = (playerId, playerLN, playerFN, helmetString) => {
         const helmetArray = helmetString.split(" ")
         const [helmetId, helmetMake, helmetNumber, helmetSize] = helmetArray
         const updatedPlayer = {
@@ -34,13 +34,32 @@ const Player = props => {
             }
         }
         props.editPlayer(playerId, updatedPlayer)
-        props.getPlayers()
+        // props.getPlayers()
         setSelectedHelmet("")
 
         const updatedHelmet = {
-            assigned: true
+            assigned: true,
+            assignedTo: playerLN + " " + playerFN
         }
         props.editHelmet(helmetId, updatedHelmet)
+    }
+    const handleUnassignHelmet = (playerId, helmetString) => {
+        const helmetArray = helmetString.split(" ")
+        const [helmetMake, helmetNumber, helmetSize] = helmetArray
+        const foundHelmet = props.stateHelmets.find(helmet => helmet.make === helmetMake && helmet.helmetNumber === helmetNumber && helmet.size === helmetSize)
+        const updatedPlayer = {
+            assignedEquipment: {
+                helmet: "No Helmet Assigned"
+            }
+        }
+        props.editPlayer(playerId, updatedPlayer)
+        // props.getPlayers()
+        
+        const updatedHelmet = {
+            assigned: false,
+            assignedTo: ""
+        }
+        props.editHelmet(foundHelmet._id, updatedHelmet)
     }
     
     const helmets = props.player.assignedEquipment && props.player.assignedEquipment.helmet === "No Helmet Assigned" ?
@@ -51,11 +70,11 @@ const Player = props => {
                 <option key={helmet._id} value={`${helmet._id} ${helmet.make} ${helmet.helmetNumber} ${helmet.size}`}>{`${helmet.make}-${helmet.helmetNumber}-${helmet.size}`}</option>
             )}
         </select>
-        <button onClick={() => handleAssignHelmet(props.player._id, selectedHelmet)}>Assign Helmet</button><button>Cancel</button>
+        <button onClick={() => handleAssignHelmet(props.player._id, props.player.lastname, props.player.firstname, selectedHelmet)}>Assign Helmet</button><button>Cancel</button>
         </>
         : props.player.assignedEquipment &&
         <>
-        <p>{`${props.player.assignedEquipment.helmet}`}</p><button>Unassign Helmet</button>
+        <p>{`${props.player.assignedEquipment.helmet}`}</p><button onClick={() => handleUnassignHelmet(props.player._id, props.player.assignedEquipment.helmet)}>Unassign Helmet</button>
         </>
     const shoulderpads = props.player.assignedEquipment && props.player.assignedEquipment.shoulderpads === "No Shoulderpads Assigned" &&
         <>

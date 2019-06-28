@@ -94,6 +94,11 @@ export class AppContextProvider extends Component {
         foundPlayer.showModal = !foundPlayer.showModal
         console.log(foundPlayer.showModal, foundPlayer._id)
         this.setState({ player: foundPlayer })
+
+        const updateShowModal = {
+            showModal: true
+        }
+        this.editPlayer(playerId, updateShowModal)
     }
     closePlayerCardInfo = playerId => {
         const foundPlayer = this.state.players.find(player => player._id === playerId)
@@ -101,6 +106,11 @@ export class AppContextProvider extends Component {
         foundPlayer.showModal = !foundPlayer.showModal
         console.log(foundPlayer.showModal, foundPlayer._id)
         this.setState({ player: {} })
+
+        const updateShowModal = {
+            showModal: false
+        }
+        this.editPlayer(playerId, updateShowModal)
     }
     getHelmet = helmetId => {
         return tieAxios.get(`/api/helmet/${helmetId}`)
