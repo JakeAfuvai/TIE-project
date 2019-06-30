@@ -17,6 +17,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    overflow: scroll;
 }
 .grid-player-layout {
     width: 80vw;
@@ -33,3 +34,18 @@
 .helmet:hover, .shoulderpads:hover, .see-more-btn {
     cursor: pointer;
 }
+.player-equipment-container {
+    width: 90%;
+    margin: 5pt auto;
+    display: grid;
+    grid-template-columns: 10% auto 1fr 1fr auto 10%;
+    grid-template-rows: auto 13pt auto 13pt auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.equip-title{grid-column: 3 / 5; grid-row: 1;}
+.helmet-icon{grid-column: 3; grid-row: 3; justify-self: center; fill: white;}
+.player-helmet{grid-column: 4; grid-row: 3; justify-self: start;}
+.sp-icon{grid-column: 3; grid-row: 5; justify-self: center; fill: white;}
+.player-sp{grid-column: 4; grid-row: 5; justify-self: start;}
