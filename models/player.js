@@ -20,17 +20,23 @@ const playerSchema = new Schema({
         type: String,
         default: ""
     },
-    assignedEquipment: {
-        helmet: {
-            type: String,
-            default: "No Helmet Assigned"
-        },
-        shoulderpads: {
-            type: String,
-            default: "No Shoulderpads Assigned"
-        }
+    helmet: {
+        type: String,
+        default: "No Helmet Assigned"
+    },
+    shoulderpads: {
+        type: String,
+        default: "No Shoulderpads Assigned"
     },
     showModal: {
+        type: Boolean,
+        default: false
+    },
+    showHelmetModal: {
+        type: Boolean,
+        default: false
+    },
+    showShoulderpadModal: {
         type: Boolean,
         default: false
     },

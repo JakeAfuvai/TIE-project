@@ -5,7 +5,7 @@ import Player from "./Player"
 import "./Roster.css"
 
 const Roster = props => {
-    const {getPlayers, getHelmets} = props
+    const {getPlayers, getHelmets, getShoulderpads} = props
 
     useEffect(() => {
         getPlayers()
@@ -14,6 +14,10 @@ const Roster = props => {
     useEffect(() => {
         getHelmets()
     }, [getHelmets])
+
+    useEffect(() => {
+        getShoulderpads()
+    }, [getShoulderpads])
     
     const [showAddPlayerModal, setShowAddPlayerModal] = useState(false)
     const showModalClass = showAddPlayerModal ? "" : "no-display"
@@ -32,6 +36,7 @@ const Roster = props => {
             <Player 
                 roster={props.players}
                 stateHelmets={props.helmets}
+                stateShoulderpads={props.shoulderpads}
             />
         </div>
     )

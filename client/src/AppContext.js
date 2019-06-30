@@ -112,6 +112,54 @@ export class AppContextProvider extends Component {
         }
         this.editPlayer(playerId, updateShowModal)
     }
+    getHelmetAssignCard = playerId => {
+        const foundPlayer = this.state.players.find(player => player._id === playerId)
+        console.log(foundPlayer.showHelmetModal, foundPlayer._id)
+        foundPlayer.showHelmetModal = !foundPlayer.showHelmetModal
+        console.log(foundPlayer.showHelmetModal, foundPlayer._id)
+        this.setState({ player: foundPlayer })
+
+        const updateShowHelmetModal = {
+            showHelmetModal: true
+        }
+        this.editPlayer(playerId, updateShowHelmetModal)
+    }
+    closeHelmetAssignCard = playerId => {
+        const foundPlayer = this.state.players.find(player => player._id === playerId)
+        console.log(foundPlayer.showHelmetModal, foundPlayer._id)
+        foundPlayer.showHelmetModal = !foundPlayer.showHelmetModal
+        console.log(foundPlayer.showHelmetModal, foundPlayer._id)
+        this.setState({ player: {} })
+
+        const updateShowHelmetModal = {
+            showHelmetModal: false
+        }
+        this.editPlayer(playerId, updateShowHelmetModal)
+    }
+    getShoulderpadAssignCard = playerId => {
+        const foundPlayer = this.state.players.find(player => player._id === playerId)
+        console.log(foundPlayer.showShoulderpadModal, foundPlayer._id)
+        foundPlayer.showShoulderpadModal = !foundPlayer.showShoulderpadModal
+        console.log(foundPlayer.showShoulderpadModal, foundPlayer._id)
+        this.setState({ player: foundPlayer })
+
+        const updateShowShoulderpadModal = {
+            showShoulderpadModal: true
+        }
+        this.editPlayer(playerId, updateShowShoulderpadModal)
+    }
+    closeShoulderpadAssignCard = playerId => {
+        const foundPlayer = this.state.players.find(player => player._id === playerId)
+        console.log(foundPlayer.showShoulderpadModal, foundPlayer._id)
+        foundPlayer.showShoulderpadModal = !foundPlayer.showShoulderpadModal
+        console.log(foundPlayer.showShoulderpadModal, foundPlayer._id)
+        this.setState({ player: {} })
+
+        const updateShowShoulderpadModal = {
+            showShoulderpadModal: false
+        }
+        this.editPlayer(playerId, updateShowShoulderpadModal)
+    }
     getHelmet = helmetId => {
         return tieAxios.get(`/api/helmet/${helmetId}`)
             .then(response => {
@@ -257,6 +305,10 @@ export class AppContextProvider extends Component {
                     getPlayer: this.getPlayer,
                     getPlayerCardInfo: this.getPlayerCardInfo,
                     closePlayerCardInfo: this.closePlayerCardInfo,
+                    getHelmetAssignCard: this.getHelmetAssignCard,
+                    closeHelmetAssignCard: this.closeHelmetAssignCard,
+                    getShoulderpadAssignCard: this.getShoulderpadAssignCard,
+                    closeShoulderpadAssignCard: this.closeShoulderpadAssignCard,
                     addPlayer: this.addPlayer,
                     editPlayer: this.editPlayer,
                     deletePlayer: this.deletePlayer,

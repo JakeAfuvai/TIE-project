@@ -18,3 +18,18 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+.grid-player-layout {
+    width: 80vw;
+    margin: 10pt auto;
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+.see-more-btn {
+    width: 30pt;
+}
+.helmet:hover, .shoulderpads:hover, .see-more-btn {
+    cursor: pointer;
+}

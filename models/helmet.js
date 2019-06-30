@@ -23,7 +23,10 @@ const helmetSchema = new Schema({
         type: Boolean,
         default: false
     },
-    assignedTo: String,
+    assignedTo: {
+        type: String,
+        default: "unassigned"
+    },
     showModal: {
         type: Boolean,
         default: false
