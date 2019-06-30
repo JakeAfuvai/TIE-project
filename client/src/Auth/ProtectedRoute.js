@@ -7,7 +7,7 @@ function ProtectedRoute(props) {
     return (
         props.token ?
             <Route {...rest} component={Component} /> :
-            <Redirect to="/home" />
+            <Redirect to="/" />
     )
 }
 

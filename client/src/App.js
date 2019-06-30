@@ -31,7 +31,7 @@ const App = () => {
                 <ProtectedRoute path="/inventory" component={Inventory} />
                 <ProtectedRoute path="/helmet_list" component={HelmetList} />
                 <ProtectedRoute path="/shoulderpad_list" component={ShoulderpadList} />
-                {/* <Route exact path="/" render={() => <Redirect to="/user_home" />}/> */}
+                <Route exact path="/" render={() => <Redirect to="/user_home" />}/>
             </Switch>
             {/* <Home /> */}
             <Footer />
