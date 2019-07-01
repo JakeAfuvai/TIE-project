@@ -1,6 +1,23 @@
-body * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     list-style: none;
+    text-decoration: none;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+button {
+    cursor: pointer;
+    padding: 5pt 8pt;
+    border: none;
+    border-bottom: 1pt solid #333;
+    border-top-left-radius: 3pt;
+    transition: 0.3s;
+}
+button:hover {
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    border-bottom: 1pt solid #444;
+    border-top-left-radius: 5pt;
+    transition: 0.3s;
 }
