@@ -83,6 +83,7 @@ const Player = props => {
         }
         props.editHelmet(helmetId, updatedHelmet)
         props.closeHelmetAssignCard(playerId)
+        
     }
     const handleAssignShoulderpad = (playerId, playerLN, playerFN, playerHelmet, shoulderPadString) => {
         const shoulderPadArray = shoulderPadString.split(" ")
@@ -241,6 +242,7 @@ const Player = props => {
     }
 
     const modal = props.player.showModal && 
+        
 		<div className="outer-modal">
 			<div className="modal-show">
 				<button onClick={() => closePlayerCardAndEdit(props.player._id)}>X</button>

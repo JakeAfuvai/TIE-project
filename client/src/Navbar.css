@@ -1,0 +1,81 @@
+.navbar-container {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-title {
+    margin-left: 10pt;
+    color: black;
+    transition: 0.3s;
+}
+.navbar-title:hover {
+    cursor: pointer;
+    background: rgba(0,0,0,0.2);
+    padding: 2pt 5pt;
+}
+.nav-link-container {
+    display: flex;
+    margin-right: 10pt;
+    width: 40vw;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-link {
+    padding: 2pt 5pt;
+    border-bottom: 2pt solid rgba(255,255,255,0);
+    transition: 0.3s;
+}
+.nav-link > a {
+    color: black;
+}
+.nav-link:hover {
+    border-bottom: 2pt solid #333;
+    transition: 0.3s;
+}
+.nav-link:last-child:hover {
+    border-bottom: 2pt solid rgba(255,255,255,0);
+}
+.fm-icon {
+    fill: rgb(202, 119, 11);
+    padding: 2pt 5pt;
+    border-radius: 3pt;
+    transition: 0.3s;
+}
+.fm-icon:hover {
+    cursor: pointer;
+    background: rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.no-display {
+    display: none;
+}
+.outer-side-drawer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+.side-drawer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    width: 45vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.97);
+    color: #333;
+    z-index: 2;
+}
+.side-drawer > button {
+    width: 100%;
+    background: #333;
+    color: #fff;
+    font-size: 1.5em;
+}

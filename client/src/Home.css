@@ -1,0 +1,120 @@
+.home-container {
+    background: #333;
+    min-height: 80vh;
+    max-height: auto;
+    width: 100vw;
+}
+.svg-team-container {
+    width: 50vw;
+}
+.team-path {
+    fill:rgba(255,0,0,0.01);
+    stroke:#fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 4px;
+    stroke-dasharray: 918px;
+    stroke-dashoffset: 918px;
+    animation-name: trace-team;
+    /* animation-delay: 3s; */
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier;
+}
+@keyframes trace-team {
+    0% {
+        opacity: 0;
+        fill: none;
+        stroke-dashoffset: 918px;
+    }
+    30% {
+        opacity: 1;
+        fill: none;
+        stroke-dashoffset: 918px;
+    }
+    80% {
+        fill: rgba(255,255,255,0);
+    }
+    100% {
+        opacity: 1;
+        fill: rgba(255,255,255,1);
+        stroke-dashoffset: 0;
+    }
+}
+.svg-is-container {
+    width: 20vw;
+}
+.is-path {
+    fill:rgba(255,0,0,0.01);
+    stroke:#fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 4px;
+    stroke-dasharray: 918px;
+    stroke-dashoffset: 918px;
+    animation-name: trace-is;
+    animation-delay: 2.25s;
+    animation-duration: 2.25s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier;
+}
+@keyframes trace-is {
+    0% {
+        opacity: 0;
+        fill: none;
+        stroke-dashoffset: 918px;
+    }
+    30% {
+        opacity: 1;
+        fill: none;
+        stroke-dashoffset: 918px;
+    }
+    80% {
+        fill: rgba(255,255,255,0);
+    }
+    100% {
+        opacity: 1;
+        fill: rgba(255,255,255,1);
+        stroke-dashoffset: 0;
+    }
+}
+.svg-everything-container {
+    width: 95vw;
+}
+.everything-path {
+    fill:rgba(255,0,0,0.01);
+    stroke:#fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 4px;
+    stroke-dasharray: 918px;
+    stroke-dashoffset: 918px;
+    animation-name: trace-everything;
+    animation-delay: 4.25s;
+    animation-duration: 3.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier;
+}
+@keyframes trace-everything {
+    0% {
+        opacity: 0;
+        fill: none;
+        stroke-dashoffset: 918px;
+    }
+    30% {
+        opacity: 1;
+        fill: none;
+        stroke-dashoffset: 918px;
+    }
+    80% {
+        fill: rgba(255,255,255,0);
+    }
+    100% {
+        opacity: 1;
+        fill: rgba(255,255,255,1);
+        stroke-dashoffset: 0;
+    }
+}
