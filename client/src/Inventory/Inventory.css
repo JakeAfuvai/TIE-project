@@ -1,0 +1,21 @@
+.inventory-container {
+    width: 100vw;
+    height: 80vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+.inventory-container a {
+    color: black;
+    border-bottom: 2pt solid rgba(0,0,0,0.8);
+    transition: 0.3s;
+    font-size: 2.5em;
+}
+.inventory-container a:hover {
+    transition: 0.3s;
+    border-bottom-color: #9eaa31;
+    color: rgba(0,0,0,0.5);
+}

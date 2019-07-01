@@ -16,19 +16,19 @@ const Helmet = props => {
     .map(
         helmet => 
             <div key={helmet._id} className="grid-helmet-layout">
-                <p>
+                <p className="helmet-make">
                     {helmet.make.toUpperCase()} 
                 </p>
-                <p>
+                <p className="helmet-model">
                     {helmet.model.toUpperCase()}
                 </p>
-                <p>
+                <p className="helmet-size">
                     {helmet.size.toUpperCase()}
                 </p>
-                <p>
+                <p className="helmet-number">
                     {helmet.helmetNumber.toUpperCase()}
                 </p>
-                <p>
+                <p className="helmet-assigned-to">
                     {helmet.assignedTo.toUpperCase()}
                 </p>
                 {/* <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>

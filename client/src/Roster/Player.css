@@ -20,16 +20,21 @@
     overflow: scroll;
 }
 .grid-player-layout {
-    width: 80vw;
+    width: 70vw;
     margin: 10pt auto;
     display: grid;
-    grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1.5fr 1fr 1.5fr 1fr;
     grid-template-rows: auto;
     justify-content: space-between;
     align-items: center;
 }
 .see-more-btn {
-    width: 30pt;
+    width: auto;
+    justify-self: end;
+    font-size: 1.5em;
+}
+.helmet, .shoulderpads {
+    justify-self: center;
 }
 .helmet:hover, .shoulderpads:hover, .see-more-btn {
     cursor: pointer;

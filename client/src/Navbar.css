@@ -1,5 +1,8 @@
 .navbar-container {
-    width: auto;
+    width: 100vw;
+    min-height: 10vh;
+    max-height: auto;
+    background: rgba(0,0,0,0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,13 +68,24 @@
     top: 0;
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
+    justify-content: space-between;
     align-items: center;
     width: 45vw;
     height: 100vh;
     background: rgba(255,255,255,0.97);
     color: #333;
     z-index: 2;
+}
+.side-drawer > a {
+    color: #333;
+    border-bottom: 2pt solid #fff;
+    transition: 0.3s;
+    font-size: 1.5em;
+}
+.side-drawer > a:hover {
+    border-bottom: 2pt solid #333;
+    color: rgba(0,0,0,0.5);
+    transition: 0.3s;
 }
 .side-drawer > button {
     width: 100%;

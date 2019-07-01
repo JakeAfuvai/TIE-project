@@ -23,12 +23,22 @@ const HelmetList = props => {
     }
 
     return (
-        <div className="roster-container">
+        <div className="helmets-container">
             <div className={`add-helmet-container ${showModalClass}`}>
                 <AddHelmetForm handleAddHelmetModal={handleModalLogic} />
             </div>
-            <h1>HELMETS</h1>
-            <button onClick={handleModalLogic}>ADD HELMET</button>
+            <div className="helmet-title-container">
+                <h1>HELMETS</h1>
+                <button onClick={handleModalLogic}>ADD HELMET</button>
+            </div>
+            <div className="helmet-grid-titles">
+                <h2 className="helmet-make-title">Helmet Make</h2>
+                <h2 className="helmet-model-title">Model</h2>
+                <h2 className="helmet-size-title">Size</h2>
+                <h2 className="helmet-helmet-number-title">Helmet Number</h2>
+                <h2 className="helmet-assigned-to-title">Assigned To</h2>
+            </div>
+            <hr style={{width: "70vw", margin: "0 auto"}}/>
             <Helmet/>
         </div>
     )

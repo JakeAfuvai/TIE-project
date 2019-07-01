@@ -1,0 +1,6 @@
+.footer-container {
+    width: 100vw;
+    min-height: 10vh;
+    max-height: auto;
+    background: rgba(10, 10, 10, 0.75)
+}

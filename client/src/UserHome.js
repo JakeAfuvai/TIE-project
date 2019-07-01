@@ -1,11 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { withContext } from "./AppContext"
+import "./UserHome.css"
 
 const UserHome = props => {
     return (
         <div className="user-home-container">
-            <h1>Hey Coach {props.user.username}, Here's Your Stuff...</h1>
+            <h1>Welcome Home Coach {props.user.username.toUpperCase()}</h1>
             <Link to="/roster">Roster</Link>
             <Link to="/inventory">Inventory</Link>
         </div>

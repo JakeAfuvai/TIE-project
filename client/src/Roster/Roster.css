@@ -1,3 +1,7 @@
+.roster-container {
+    min-height: 80vh;
+    max-height: auto;
+}
 .add-player-container {
     position: fixed;
     background: rgba(0,0,0,0.8);
@@ -7,8 +11,29 @@
     left: 0;
     z-index: 1;
 }
-
 .no-display {
     display: none;
     /* opacity: 0; */
+}
+.roster-title-container {
+    margin: 10pt auto;
+    text-align: center;
+}
+.roster-title-container > * {
+    margin: 10pt 0;
+}
+.player-grid-titles {
+    width: 70vw;
+    margin: 10pt auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1fr 1.5fr 1fr;
+    grid-template-rows: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+.player-helmet-title, .player-shoulderpad-title {
+    justify-self: center;
+}
+.player-see-more-title {
+    justify-self: end;
 }

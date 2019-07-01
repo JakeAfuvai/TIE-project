@@ -16,19 +16,19 @@ const Shoulderpad = props => {
     .map(
         shoulderpad => 
             <div key={shoulderpad._id} className="grid-shoulderpad-layout">
-                <p>
+                <p className="shoulderpad-make">
                     {shoulderpad.make.toUpperCase()} 
                 </p>
-                <p>
+                <p className="shoulderpad-model">
                     {shoulderpad.model.toUpperCase()}
                 </p>
-                <p>
+                <p className="shoulderpad-size">
                     {shoulderpad.size.toUpperCase()}
                 </p>
-                <p>
+                <p className="shoulderpad-number">
                     {shoulderpad.shoulderpadNumber.toUpperCase()}
                 </p>
-                <p>
+                <p className="shoulderpad-assigned-to">
                     {shoulderpad.assignedTo.toUpperCase()}
                 </p>
                 {/* <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>

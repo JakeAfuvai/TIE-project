@@ -20,12 +20,18 @@
     overflow: scroll;
 }
 .grid-shoulderpad-layout {
-    width: 80vw;
+    width: 70vw;
     margin: 10pt auto;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 1.5fr 1.5fr 1fr 1.5fr 1fr;
     grid-template-rows: auto;
     grid-gap: 5pt;
     justify-content: space-between;
     align-items: center;
+}
+.shoulderpad-size, .shoulderpad-number {
+    justify-self: center;
+}
+.shoulderpad-assigned-to {
+    justify-self: end;
 }

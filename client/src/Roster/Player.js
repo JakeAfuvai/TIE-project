@@ -375,9 +375,9 @@ const Player = props => {
                     <p>
                         {player.grade.toUpperCase()}
                     </p>
-                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
-                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
-                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>...</button>
+                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
+                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
+                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>. . .</button>
                 </div>    
         )
     const sortedJuniorPlayers = props.roster.filter(
@@ -395,9 +395,9 @@ const Player = props => {
                     <p>
                         {player.grade.toUpperCase()}
                     </p>
-                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
-                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
-                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>...</button>
+                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
+                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
+                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>. . .</button>
                 </div>    
         )
         const sortedSophomorePlayers = props.roster.filter(
@@ -415,9 +415,9 @@ const Player = props => {
                     <p>
                         {player.grade.toUpperCase()}
                     </p>
-                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
-                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
-                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>...</button>
+                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
+                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
+                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>. . .</button>
                 </div>    
         )
         const sortedFreshmanPlayers = props.roster.filter(
@@ -435,9 +435,9 @@ const Player = props => {
                     <p>
                         {player.grade.toUpperCase()}
                     </p>
-                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
-                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
-                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>...</button>
+                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
+                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
+                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>. . .</button>
                 </div>    
         )
 
