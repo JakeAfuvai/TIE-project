@@ -9,13 +9,13 @@ const UserHome = props => {
 
     useEffect(() => {
         getPlayers()
-    }, [getPlayers])
+    }, [])
     useEffect(() => {
         getHelmets()
-    }, [getHelmets])
+    }, [])
     useEffect(() => {
         getShoulderpads()
-    }, [getShoulderpads])
+    }, [])
 
     const playersWithHelmets = props.players.filter(player => player.helmet !== "No Helmet Assigned").length
     const playersWithOutHelmets = props.players.filter(player => player.helmet === "No Helmet Assigned").length

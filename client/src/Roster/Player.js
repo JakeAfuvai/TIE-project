@@ -44,12 +44,23 @@ const Player = props => {
     const kStyle = k ? {background: "limegreen", transition: "0.3s"} : null
     const pStyle = p ? {background: "limegreen", transition: "0.3s"} : null
 
-    const editModeSetter = ({lastname, firstname, grade}) => {
+    const editModeSetter = ({lastname, firstname, grade, position}) => {
         setEditMode(!editMode)
         setLastname(lastname)
         setFirstname(firstname)
         setGrade(grade)
         clearPositions()
+        position.includes("OL") && setol(true)
+        position.includes("QB") && setqb(true)
+        position.includes("RB") && setrb(true)
+        position.includes("TE") && sette(true)
+        position.includes("WR") && setwr(true)
+        position.includes("DL") && setdl(true)
+        position.includes("LB") && setlb(true)
+        position.includes("DB") && setdb(true)
+        position.includes("LS") && setls(true)
+        position.includes("K") && setk(true)
+        position.includes("P") && setp(true)
     }
 
     // filtered helmets to display / select only available helmets/spads
@@ -210,9 +221,9 @@ const Player = props => {
         setk(false)
         setp(false)
     }
-
-    const handlePlayerEdits = (playerId) => {
-        let playerPositions = [] 
+    const handlePlayerEdits = (playerPosition, playerId) => {
+        // let playerPositions = [...playerPosition] 
+        let playerPositions = []
         ol && playerPositions.push("OL") 
         qb && playerPositions.push("QB")
         rb && playerPositions.push("RB")
@@ -224,11 +235,15 @@ const Player = props => {
         ls && playerPositions.push("LS")
         k && playerPositions.push("K")
         p && playerPositions.push("P")
+        
+        // to prevent duplicate values
+        // let filteredPositions = playerPositions.filter((position, i, positions) => positions.indexOf(position) === i)
 
         let updatedPlayer = {
             lastname,
             firstname,
             grade,
+            // position: filteredPositions
             position: playerPositions
         }
         props.editPlayer(playerId, updatedPlayer)
@@ -325,7 +340,7 @@ const Player = props => {
                     >P</div>
                 </div>
 
-                <button onClick={() => handlePlayerEdits(props.player._id)}>Submit Changes</button>
+                <button onClick={() => handlePlayerEdits(props.player.position, props.player._id)}>Submit Changes</button>
                 </>
                 }
                 <div className="player-equipment-container">

@@ -35,13 +35,14 @@
     background: rgba(255,255,255,0.98);
     padding-bottom: 20pt;
 }
+.dashboard > * {
+    margin: 10pt 0;
+}
 .dashboard > button {
     width: 100%;
     font-size: 1.5em;
     margin-bottom: 10pt;
-}
-.dashboard > * {
-    margin: 10pt 0;
+    margin-top: 0;
 }
 hr {
     width: 70%;
