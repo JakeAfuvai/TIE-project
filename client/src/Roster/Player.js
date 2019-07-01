@@ -191,7 +191,6 @@ const Player = props => {
         props.closePlayerCardInfo(playerId)
         setEditMode(false)
     }
-
     const clearState = () => {
         setFirstname("")
         setLastname("")

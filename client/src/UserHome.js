@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import { Link } from "react-router-dom"
 import { withContext } from "./AppContext"
-import { Doughnut, Line, Bar, Bubble, Scatter, Polar } from "react-chartjs-2"
+import { Line, Polar } from "react-chartjs-2"
 import "./UserHome.css"
 
 const UserHome = props => {
@@ -9,13 +9,13 @@ const UserHome = props => {
 
     useEffect(() => {
         getPlayers()
-    }, [])
+    }, [getPlayers])
     useEffect(() => {
         getHelmets()
-    }, [])
+    }, [getHelmets])
     useEffect(() => {
         getShoulderpads()
-    }, [])
+    }, [getShoulderpads])
 
     const playersWithHelmets = props.players.filter(player => player.helmet !== "No Helmet Assigned").length
     const playersWithOutHelmets = props.players.filter(player => player.helmet === "No Helmet Assigned").length
@@ -90,20 +90,22 @@ const UserHome = props => {
             <button onClick={handleDashboard}>See Your Dashboard</button>
             <Link to="/roster">Roster</Link>
             <Link to="/inventory">Inventory</Link>
-            <div className={`dashboard ${dashboardClass}`}>
-                <button onClick={handleDashboard}>X</button>
-                <h3>Players With Helmets</h3>
-                <hr/>
-                <Polar data={dataHelmet} options={options}/>
-                <h3>Players With Shoulder Pads</h3>
-                <hr/>
-                <Polar data={dataShoulderpad} options={options}/>
-                <h3>Helmets Assigned</h3>
-                <hr/>
-                <Line data={dataHelmets} options={options}/>
-                <h3>Shoulder Pads Assigned</h3>
-                <hr/>
-                <Polar data={dataShoulderpads} options={options}/>
+            <div className={`outer-dashboard ${dashboardClass}`}>
+                <div className={`dashboard`}>
+                    <button onClick={handleDashboard}>X</button>
+                    <h3>Players With Helmets</h3>
+                    <hr/>
+                    <Polar data={dataHelmet} options={options}/>
+                    <h3>Players With Shoulder Pads</h3>
+                    <hr/>
+                    <Polar data={dataShoulderpad} options={options}/>
+                    <h3>Helmets Assigned</h3>
+                    <hr/>
+                    <Line data={dataHelmets} options={options}/>
+                    <h3>Shoulder Pads Assigned</h3>
+                    <hr/>
+                    <Polar data={dataShoulderpads} options={options}/>
+                </div>
             </div>
         </div>
     )

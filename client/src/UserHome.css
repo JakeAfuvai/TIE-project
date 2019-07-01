@@ -20,11 +20,28 @@
     border-bottom-color: #9eaa31;
     color: rgba(0,0,0,0.5);
 }
+.outer-dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+    display: flex;
+    /* flex-direction: column; */
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.6);
+    padding-bottom: 20pt;
+    z-index: 1;
+}
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
+    max-width: 600px;
     height: 100vh;
     overflow: scroll;
     display: flex;
@@ -34,6 +51,7 @@
     justify-content: space-between;
     background: rgba(255,255,255,0.98);
     padding-bottom: 20pt;
+    z-index: 2;
 }
 .dashboard > * {
     margin: 10pt 0;

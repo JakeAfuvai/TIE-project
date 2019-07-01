@@ -1,22 +1,25 @@
-import React from "react"
+import React, {Suspense,lazy} from "react"
 import { Switch, Route, Redirect } from "react-router-dom"
 import Navbar from "./Navbar"
 import Home from "./Home"
 import Footer from "./Footer"
 import Signup from "./Auth/Signup"
 import Login from "./Auth/Login"
-import UserHome from "./UserHome"
-import Roster from "./Roster/Roster"
+// import UserHome from "./UserHome"
+// import Roster from "./Roster/Roster"
 import Inventory from "./Inventory/Inventory"
 import HelmetList from "./Inventory/HelmetList"
 import ShoulderpadList from "./Inventory/ShoulderpadList"
 import ProtectedRoute from "./Auth/ProtectedRoute"
 import "./App.css"
+const UserHome = lazy(()=>import("./UserHome"))
+const Roster = lazy(()=>import("./Roster/Roster"))
 
 const App = () => {
     return (
         <div className="app-container">
             <Navbar />
+            <Suspense fallback={<div className="loading">Loading...</div>}>
             <Switch>
                 {/* <Route exact path="/" component={Home}/>
                 <ProtectedRoute path="/user_home" component={UserHome}/>
@@ -33,6 +36,7 @@ const App = () => {
                 <ProtectedRoute path="/shoulderpad_list" component={ShoulderpadList} />
                 <Route exact path="/" render={() => <Redirect to="/user_home" />}/>
             </Switch>
+            </Suspense>
             {/* <Home /> */}
             <Footer />
         </div>

@@ -7,10 +7,10 @@ const Inventory = props => {
     const {getHelmets, getShoulderpads} = props
     useEffect(() => {
         getHelmets()
-    }, [])
+    }, [getHelmets])
     useEffect(() => {
         getShoulderpads()
-    }, [])
+    }, [getShoulderpads])
     return (
         <div className="inventory-container">
             <h1>Inventory</h1>
