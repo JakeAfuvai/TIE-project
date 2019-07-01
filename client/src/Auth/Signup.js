@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withContext } from "../AppContext"
+import "./Signup.css"
 
 class Signup extends Component {
     constructor() {
@@ -33,6 +34,7 @@ class Signup extends Component {
             .catch(err => {
                 this.setState({errorMessage: err.response.data.message})
             })
+            this.clearInputs()
     }
 
     render() {
@@ -45,21 +47,25 @@ class Signup extends Component {
                         value={this.state.username}
                         name="username"
                         type="text"
-                        placeholder="Username"/>
+                        placeholder="Username"
+                    />
                     <input
                         onChange={this.handleChange}
                         value={this.state.password}
                         name="password"
                         type="password"
-                        placeholder="Password"/>
-                    <button type="submit">Create Account</button>
+                        placeholder="Password"
+                    />
+                    {this.state.username !== "" && this.state.password !== "" ?
+                        <button type="submit">Create Account</button>
+                        :           
+                        <p>Enter Username and Password to Signup</p>
+                    }
+                    {
+                        this.state.errorMessage &&
+                        <p style={{background: "#faafaa", color: "#FFF", fontSize: "0.75em", padding: "1pt 5pt", borderRadius: "2pt"}}>{this.state.errorMessage}</p>
+                    }
                 </form>
-
-                {
-                    this.state.errorMessage &&
-                    <p style={{color: "red"}}>{this.state.errorMessage}</p>
-                }
-
             </div>
         )
     }

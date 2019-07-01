@@ -18,8 +18,8 @@ const LoginForm = (props) => {
             .then(() => props.history.push("/user_home"))
             .catch(err => {
                 setErrorMessage(err.response.data.message)
-                clearInputs()
             })
+            clearInputs()
             // call clearInputs?
     }
 
@@ -41,13 +41,11 @@ const LoginForm = (props) => {
                     type="password"
                     placeholder="password"/>
                 <button type="submit">Submit</button>
-            </form>
-
             {
                 errorMessage &&
-                <p style={{color: "red"}}>{errorMessage}</p>
+                <p style={{background: "#faafaa", color: "#FFF", fontSize: "0.75em", padding: "1pt 5pt", borderRadius: "2pt"}}>{errorMessage}</p>
             }
-
+            </form>
         </div>
     )
 }

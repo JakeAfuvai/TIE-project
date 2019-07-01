@@ -10,7 +10,7 @@ authRouter.post("/signup", (req, res, next) => {
             return next(err)
         } else if (existingUser !== null) {
             res.status(400)
-            return next(new Error("That username already exists!"))
+            return next(new Error("That username is being used!"))
         }
         const newUser = new User(req.body)
         newUser.save((err, user) => {

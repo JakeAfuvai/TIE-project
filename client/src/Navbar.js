@@ -10,6 +10,11 @@ const Navbar = (props) => {
     const handleMenuClick = () => {
         setMenuToggle(!menuToggle)
     }
+    const handleLogout = () => {
+        props.logout()
+        handleMenuClick()
+
+    }
     const hiddenClass = !menuToggle ? "no-display" : ""
 
     const conditionalNav = !props.token ?
@@ -29,7 +34,7 @@ const Navbar = (props) => {
                 <div className={`outer-side-drawer ${hiddenClass}`}>
                     <div className={`side-drawer`}>
                         <button onClick={handleMenuClick}>X</button>
-                        <h2>Sign Up or Log In to view Menu</h2>
+                        <h2 style={{position: "relative",top: "-50%"}}>Sign Up or Log In to view Menu</h2>
                     </div>
                 </div>
             </div>
@@ -71,7 +76,7 @@ const Navbar = (props) => {
                             to="/shoulderpad_list" 
                             onClick={handleMenuClick}>Shoulder Pads
                         </Link>
-                        <button onClick={() => props.logout()}>Logout</button>
+                        <button onClick={handleLogout}>Logout</button>
                     </div>
                 </div>
             </div>

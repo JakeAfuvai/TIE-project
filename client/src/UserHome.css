@@ -1,6 +1,7 @@
 .user-home-container {
     width: 100vw;
-    height: 80vh;
+    min-height: 80vh;
+    max-height: auto;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -18,4 +19,33 @@
     transition: 0.3s;
     border-bottom-color: #9eaa31;
     color: rgba(0,0,0,0.5);
+}
+.dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.98);
+    padding-bottom: 20pt;
+}
+.dashboard > button {
+    width: 100%;
+    font-size: 1.5em;
+    margin-bottom: 10pt;
+}
+.dashboard > * {
+    margin: 10pt 0;
+}
+hr {
+    width: 70%;
+}
+.no-display {
+    display: none;
 }
