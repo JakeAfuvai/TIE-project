@@ -38,3 +38,9 @@
 .shoulderpad-assigned-to-title {
     justify-self: end;
 }
+
+@media (max-width: 768px) {
+    .shoulderpad-grid-titles {
+        font-size: 0.5em;
+    }
+}

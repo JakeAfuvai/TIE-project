@@ -37,3 +37,9 @@
 .helmet-assigned-to-title {
     justify-self: end;
 }
+
+@media (max-width: 768px) {
+    .helmet-grid-titles {
+        font-size: 0.5em;
+    }
+}

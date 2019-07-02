@@ -19,6 +19,9 @@
     transition: 0.3s;
     border-bottom-color: #9eaa31;
     color: rgba(0,0,0,0.5);
+} 
+.user-home-container > button {
+    font-size: 1em;
 }
 .outer-dashboard, .outer-dashboard-roster {
     position: fixed;
@@ -67,4 +70,13 @@ hr {
 }
 .no-display {
     display: none;
+}
+
+@media (max-width: 768px) {
+    .user-home-container h1 {
+        font-size: 1.1rem;
+    }
+    .user-home-container a {
+        font-size: 1.75rem;
+    }
 }

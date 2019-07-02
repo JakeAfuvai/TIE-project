@@ -54,3 +54,19 @@
 .player-helmet{grid-column: 4; grid-row: 3; justify-self: start;}
 .sp-icon{grid-column: 3; grid-row: 5; justify-self: center; fill: white;}
 .player-sp{grid-column: 4; grid-row: 5; justify-self: start;}
+
+@media (max-width: 768px) {
+    .helmet {
+        height: 3vh;
+    }
+    .shoulderpads {
+        height: 2.5vh;
+    }
+    .see-more-btn {
+        width: 23pt;
+        font-size: 0.5em;
+    }
+    .grid-player-layout > p {
+        font-size: 0.75em;
+    }
+}

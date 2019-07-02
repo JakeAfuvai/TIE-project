@@ -37,3 +37,9 @@
 .player-see-more-title {
     justify-self: end;
 }
+
+@media (max-width: 768px) {
+    .roster-container h2 {
+        font-size: 1em
+    }
+}

@@ -35,3 +35,9 @@
 .shoulderpad-assigned-to {
     justify-self: end;
 }
+
+@media (max-width: 768px) {
+    .grid-shoulderpad-layout > p {
+        font-size: 0.75em;
+    }
+}
