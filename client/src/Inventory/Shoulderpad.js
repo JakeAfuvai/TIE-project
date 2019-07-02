@@ -28,12 +28,9 @@ const Shoulderpad = props => {
                 <p className="shoulderpad-number">
                     {shoulderpad.shoulderpadNumber.toUpperCase()}
                 </p>
-                <p className="shoulderpad-assigned-to">
+                <p className="shoulderpad-assigned-to" style={!shoulderpad.assigned?{color:"limegreen"}:{color:"slategray", opacity: 0.65}}>
                     {shoulderpad.assignedTo.toUpperCase()}
                 </p>
-                {/* <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
-                <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.3} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
-                <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>...</button> */}
             </div>    
     )
 

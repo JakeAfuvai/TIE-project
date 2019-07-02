@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react"
 import { Link } from "react-router-dom"
 import { withContext } from "./AppContext"
 import { Line, Polar, Bar, Doughnut } from "react-chartjs-2"
+import Fade from "react-reveal/Fade"
 import "./UserHome.css"
 
 const UserHome = props => {
@@ -297,7 +298,9 @@ const UserHome = props => {
             <Link to="/roster">Roster</Link>
             <button onClick={handleDashboard}>See Inventory Dashboard</button>
             <Link to="/inventory">Inventory</Link>
+            <Fade left when={showDashboard}>
             <div className={`outer-dashboard ${dashboardClass}`}>
+                <Fade left cascade when={showDashboard}>
                 <div className={`dashboard`}>
                     <button onClick={handleDashboard}>X</button>
                     <h3>Players With Helmets</h3>
@@ -313,8 +316,12 @@ const UserHome = props => {
                     <hr/>
                     <Polar data={dataShoulderpads} options={options}/>
                 </div>
+                </Fade>
             </div>
+            </Fade>
+            <Fade left when={showRosterDashboard}>
             <div className={`outer-dashboard-roster ${rosterDashboardClass}`}>
+                <Fade left cascade when={showRosterDashboard}>
                 <div className={`dashboard`}>
                     <button onClick={handleRosterDashboard}>X</button>
                     <h3>Players By Grade</h3>
@@ -357,7 +364,9 @@ const UserHome = props => {
                     <hr/>
                     <Bar data={dataP} options={options}/>
                 </div>
+                </Fade>
             </div>
+            </Fade>
         </div>
     )
 }

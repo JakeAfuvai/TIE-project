@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import { Link } from "react-router-dom"
 import { withContext } from "./AppContext"
 import { ReactComponent as FootballMenu } from "./images/footballMenu.svg"
+import Fade from "react-reveal/Fade"
 import "./Navbar.css"
 
 const Navbar = (props) => {
@@ -11,6 +12,7 @@ const Navbar = (props) => {
         setMenuToggle(!menuToggle)
     }
     const handleLogout = () => {
+        setMenuToggle(!menuToggle)
         props.logout()
         handleMenuClick()
 
@@ -31,12 +33,16 @@ const Navbar = (props) => {
                     height="40pt"
                     onClick={handleMenuClick}
                 />
+                <Fade left when={menuToggle}>
                 <div className={`outer-side-drawer ${hiddenClass}`}>
+                    <Fade left cascade when={menuToggle}>
                     <div className={`side-drawer`}>
                         <button onClick={handleMenuClick}>X</button>
                         <h2 style={{position: "relative",top: "-50%"}}>Sign Up or Log In to view Menu</h2>
                     </div>
+                    </Fade>
                 </div>
+                </Fade>
             </div>
         </div>
         :
@@ -53,7 +59,9 @@ const Navbar = (props) => {
                     height="40pt"
                     onClick={handleMenuClick}
                 />
+                <Fade left when={menuToggle}>
                 <div className={`outer-side-drawer ${hiddenClass}`}>
+                    <Fade left cascade when={menuToggle}>
                     <div className={`side-drawer`}>
                         <button onClick={handleMenuClick}>X</button>
                         <Link 
@@ -78,7 +86,9 @@ const Navbar = (props) => {
                         </Link>
                         <button onClick={handleLogout}>Logout</button>
                     </div>
+                    </Fade>
                 </div>
+                </Fade>
             </div>
         </div>
     return (

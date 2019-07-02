@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { ReactComponent as Helmet } from "../images/helmets.svg"
 import { ReactComponent as ShPad } from "../images/spads.svg"
 import { withContext } from "../AppContext"
+import Fade from "react-reveal/Fade"
 import "./Player.css"
 
 const Player = props => {
@@ -31,6 +32,9 @@ const Player = props => {
     const [ls, setls] = useState(false)
     const [k, setk] = useState(false)
     const [p, setp] = useState(false)
+    const [showPModal, setShowPModal] = useState(false)
+    const [showHModal, setShowHModal] = useState(false)
+    const [showSPModal, setShowSPModal] = useState(false)
 
     const olStyle = ol ? {background: "limegreen", transition: "0.3s"} : null
     const qbStyle = qb ? {background: "limegreen", transition: "0.3s"} : null
@@ -157,11 +161,11 @@ const Player = props => {
                 <option key={helmet._id} value={`${helmet._id} ${helmet.make} ${helmet.helmetNumber} ${helmet.size}`}>{`${helmet.make}-${helmet.helmetNumber}-${helmet.size}`}</option>
             )}
         </select>
-        <button onClick={() => handleAssignHelmet(props.player._id, props.player.lastname, props.player.firstname, props.player.shoulderpads, selectedHelmet)}>Assign Helmet</button>
+        <button onClick={() => {handleAssignHelmet(props.player._id, props.player.lastname, props.player.firstname, props.player.shoulderpads, selectedHelmet); setShowHModal(!showHModal)}}>Assign Helmet</button>
         </>
         : props.player.helmet &&
         <>
-        <p>{`${props.player.helmet}`}</p><button onClick={() => handleUnassignHelmet(props.player._id, props.player.shoulderpads, props.player.helmet)}>Unassign Helmet</button>
+        <p>{`${props.player.helmet}`}</p><button onClick={() => {handleUnassignHelmet(props.player._id, props.player.shoulderpads, props.player.helmet); setShowHModal(!showHModal)}}>Unassign Helmet</button>
         </>
 
 
@@ -173,11 +177,11 @@ const Player = props => {
                 <option key={shoulderpad._id} value={`${shoulderpad._id} ${shoulderpad.make} ${shoulderpad.shoulderpadNumber} ${shoulderpad.size}`}>{`${shoulderpad.make}-${shoulderpad.shoulderpadNumber}-${shoulderpad.size}`}</option>
             )}
         </select>
-        <button onClick={() => handleAssignShoulderpad(props.player._id, props.player.lastname, props.player.firstname, props.player.helmet, selectedShoulderpad)}>Assign Shoulder Pad</button>
+        <button onClick={() => {handleAssignShoulderpad(props.player._id, props.player.lastname, props.player.firstname, props.player.helmet, selectedShoulderpad); setShowSPModal(!showSPModal)}}>Assign Shoulder Pad</button>
         </>
         : props.player.shoulderpads &&
         <>
-        <p>{`${props.player.shoulderpads}`}</p><button onClick={() => handleUnassignShoulderpad(props.player._id, props.player.helmet, props.player.shoulderpads)}>Unassign Shoulder Pads</button>
+        <p>{`${props.player.shoulderpads}`}</p><button onClick={() => {handleUnassignShoulderpad(props.player._id, props.player.helmet, props.player.shoulderpads); setShowSPModal(!showSPModal)}}>Unassign Shoulder Pads</button>
         </>
 
 
@@ -186,10 +190,10 @@ const Player = props => {
         props.player.position.map((position, i) => <li key={props.player._id + i}>{position}</li>)
         : 
         `No Assigned Positions for ${props.player.firstname}`
-
     const closePlayerCardAndEdit = playerId => {
         props.closePlayerCardInfo(playerId)
         setEditMode(false)
+        setShowPModal(!showPModal)
     }
     const clearState = () => {
         setFirstname("")
@@ -256,7 +260,6 @@ const Player = props => {
     }
 
     const modal = props.player.showModal && 
-        
 		<div className="outer-modal">
 			<div className="modal-show">
 				<button onClick={() => closePlayerCardAndEdit(props.player._id)}>X</button>
@@ -349,13 +352,13 @@ const Player = props => {
                     <ShPad className="sp-icon" height="9vh" />
                     <h3 className="player-sp">{props.player.shoulderpads}</h3>
                 </div>
-			</div>		
+			</div>	
 		</div>
         // helmet assign modal
         const helmetAssignModal = props.player.showHelmetModal &&
             <div className="outer-modal">
                 <div className="modal-show">
-                    <button onClick={() => props.closeHelmetAssignCard(props.player._id)}>X</button>
+                    <button onClick={() => {props.closeHelmetAssignCard(props.player._id); setShowHModal(!showHModal)}}>X</button>
                     <h1>{props.player.lastname.toUpperCase()} {props.player.firstname.toLowerCase()}</h1>
                     <h3>Helmet</h3>
                     {helmets}
@@ -365,7 +368,7 @@ const Player = props => {
         const shoulderpadAssignModal = props.player.showShoulderpadModal &&
             <div className="outer-modal">
                 <div className="modal-show">
-                    <button onClick={() => props.closeShoulderpadAssignCard(props.player._id)}>X</button>
+                    <button onClick={() => {props.closeShoulderpadAssignCard(props.player._id); setShowSPModal(!showSPModal)}}>X</button>
                     <h1>{props.player.lastname.toUpperCase()} {props.player.firstname.toLowerCase()}</h1>
                     <h3>Shoulder Pads</h3>
                     {shoulderpads}
@@ -389,9 +392,9 @@ const Player = props => {
                     <p>
                         {player.grade.toUpperCase()}
                     </p>
-                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
-                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
-                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>. . .</button>
+                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => {props.getHelmetAssignCard(player._id); setShowHModal(!showHModal)}}/>
+                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => {props.getShoulderpadAssignCard(player._id); setShowSPModal(!showPModal)}}/>
+                    <button className="see-more-btn" onClick={() => {props.getPlayerCardInfo(player._id); setShowPModal(!showPModal)}}>. . .</button>
                 </div>    
         )
     const sortedJuniorPlayers = props.roster.filter(
@@ -409,9 +412,9 @@ const Player = props => {
                     <p>
                         {player.grade.toUpperCase()}
                     </p>
-                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
-                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
-                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>. . .</button>
+                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => {props.getHelmetAssignCard(player._id); setShowHModal(!showHModal)}}/>
+                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => {props.getShoulderpadAssignCard(player._id); setShowSPModal(!showSPModal)}}/>
+                    <button className="see-more-btn" onClick={() => {props.getPlayerCardInfo(player._id); setShowPModal(!showPModal)}}>. . .</button>
                 </div>    
         )
         const sortedSophomorePlayers = props.roster.filter(
@@ -429,9 +432,9 @@ const Player = props => {
                     <p>
                         {player.grade.toUpperCase()}
                     </p>
-                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
-                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
-                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>. . .</button>
+                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => {props.getHelmetAssignCard(player._id); setShowHModal(!showHModal)}}/>
+                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => {props.getShoulderpadAssignCard(player._id); setShowSPModal(!showSPModal)}}/>
+                    <button className="see-more-btn" onClick={() => {props.getPlayerCardInfo(player._id); setShowPModal(!showPModal)}}>. . .</button>
                 </div>    
         )
         const sortedFreshmanPlayers = props.roster.filter(
@@ -449,9 +452,9 @@ const Player = props => {
                     <p>
                         {player.grade.toUpperCase()}
                     </p>
-                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getHelmetAssignCard(player._id)}/>
-                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => props.getShoulderpadAssignCard(player._id)}/>
-                    <button className="see-more-btn" onClick={() => props.getPlayerCardInfo(player._id)}>. . .</button>
+                    <Helmet className="helmet" height="4vh" style={player.helmet === "No Helmet Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => {props.getHelmetAssignCard(player._id); setShowHModal(!showHModal)}}/>
+                    <ShPad className="shoulderpads" height="4vh" style={player.shoulderpads === "No Shoulderpads Assigned" ? {fill: "slategray", opacity: 0.65} : {fill: "limegreen"}} onClick={() => {props.getShoulderpadAssignCard(player._id);; setShowSPModal(!showSPModal)}}/>
+                    <button className="see-more-btn" onClick={() => {props.getPlayerCardInfo(player._id); setShowPModal(!showPModal)}}>. . .</button>
                 </div>    
         )
 
@@ -463,9 +466,15 @@ const Player = props => {
             {sortedJuniorPlayers}
             {sortedSophomorePlayers}
             {sortedFreshmanPlayers}
+            <Fade top opposite when={showPModal}>
             {modal}
+            </Fade>
+            <Fade top opposite when={showHModal}>
             {helmetAssignModal}
+            </Fade>
+            <Fade top opposite when={showSPModal}>
             {shoulderpadAssignModal} 
+            </Fade>
         </div>
     )
 }
