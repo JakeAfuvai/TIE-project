@@ -2,5 +2,15 @@
     width: 100vw;
     min-height: 10vh;
     max-height: auto;
-    background: rgba(10, 10, 10, 0.75)
+    padding: 7pt 0;
+    background: rgba(10, 10, 10, 0.75);
+    display: flex;
+    justify-content: space-around;
+}
+.contact-container, .about-container, .share-container {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    color: rgba(204,204,204,0.8);
+    font-size: 0.75rem;
 }

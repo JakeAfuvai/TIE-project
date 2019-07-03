@@ -161,11 +161,11 @@ const Player = props => {
                 <option key={helmet._id} value={`${helmet._id} ${helmet.make} ${helmet.helmetNumber} ${helmet.size}`}>{`${helmet.make}-${helmet.helmetNumber}-${helmet.size}`}</option>
             )}
         </select>
-        <button onClick={() => {handleAssignHelmet(props.player._id, props.player.lastname, props.player.firstname, props.player.shoulderpads, selectedHelmet); setShowHModal(!showHModal)}}>Assign Helmet</button>
+        <button style={{alignSelf: "center"}} onClick={() => {handleAssignHelmet(props.player._id, props.player.lastname, props.player.firstname, props.player.shoulderpads, selectedHelmet); setShowHModal(!showHModal)}}>Assign Helmet</button>
         </>
         : props.player.helmet &&
         <>
-        <p>{`${props.player.helmet}`}</p><button onClick={() => {handleUnassignHelmet(props.player._id, props.player.shoulderpads, props.player.helmet); setShowHModal(!showHModal)}}>Unassign Helmet</button>
+        <p>{`${props.player.helmet}`}</p><button style={{alignSelf: "center"}} onClick={() => {handleUnassignHelmet(props.player._id, props.player.shoulderpads, props.player.helmet); setShowHModal(!showHModal)}}>Unassign Helmet</button>
         </>
 
 
@@ -177,11 +177,11 @@ const Player = props => {
                 <option key={shoulderpad._id} value={`${shoulderpad._id} ${shoulderpad.make} ${shoulderpad.shoulderpadNumber} ${shoulderpad.size}`}>{`${shoulderpad.make}-${shoulderpad.shoulderpadNumber}-${shoulderpad.size}`}</option>
             )}
         </select>
-        <button onClick={() => {handleAssignShoulderpad(props.player._id, props.player.lastname, props.player.firstname, props.player.helmet, selectedShoulderpad); setShowSPModal(!showSPModal)}}>Assign Shoulder Pad</button>
+        <button style={{alignSelf: "center"}} onClick={() => {handleAssignShoulderpad(props.player._id, props.player.lastname, props.player.firstname, props.player.helmet, selectedShoulderpad); setShowSPModal(!showSPModal)}}>Assign Shoulder Pad</button>
         </>
         : props.player.shoulderpads &&
         <>
-        <p>{`${props.player.shoulderpads}`}</p><button onClick={() => {handleUnassignShoulderpad(props.player._id, props.player.helmet, props.player.shoulderpads); setShowSPModal(!showSPModal)}}>Unassign Shoulder Pads</button>
+        <p>{`${props.player.shoulderpads}`}</p><button style={{alignSelf: "center"}} onClick={() => {handleUnassignShoulderpad(props.player._id, props.player.helmet, props.player.shoulderpads); setShowSPModal(!showSPModal)}}>Unassign Shoulder Pads</button>
         </>
 
 
@@ -268,7 +268,7 @@ const Player = props => {
                 <>
 				<h1>{props.player.lastname.toUpperCase()} {props.player.firstname.toLowerCase()}</h1>
 				<h2>Grade: {props.player.grade}</h2>
-                <div>{props.player.position.length > 1 ? "Positions" : "Position"}: {showPositions}</div>
+                <div className="position-div">{props.player.position.length > 1 ? "Positions" : "Position"}: {showPositions}</div>
                 </>
                 :
                 <>
@@ -359,6 +359,7 @@ const Player = props => {
             <div className="outer-modal">
                 <div className="modal-show">
                     <button onClick={() => {props.closeHelmetAssignCard(props.player._id); setShowHModal(!showHModal)}}>X</button>
+                    <Helmet className="helmet" height="10vh" style={{fill: "white"}}/>
                     <h1>{props.player.lastname.toUpperCase()} {props.player.firstname.toLowerCase()}</h1>
                     <h3>Helmet</h3>
                     {helmets}
@@ -369,6 +370,7 @@ const Player = props => {
             <div className="outer-modal">
                 <div className="modal-show">
                     <button onClick={() => {props.closeShoulderpadAssignCard(props.player._id); setShowSPModal(!showSPModal)}}>X</button>
+                    <ShPad className="shoulderpads" height="10vh" style={{fill: "white"}}/>
                     <h1>{props.player.lastname.toUpperCase()} {props.player.firstname.toLowerCase()}</h1>
                     <h3>Shoulder Pads</h3>
                     {shoulderpads}

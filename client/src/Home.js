@@ -3,7 +3,6 @@ import Fade from "react-reveal/Fade"
 import "./Home.css"
 
 const Home = () => {
-    const styles = {background: "rgba(255,255,255,0.5)", padding: "5pt", borderRadius: "2pt"}
     return (
         <div className="home-container">
             <div className="svgs-container">
