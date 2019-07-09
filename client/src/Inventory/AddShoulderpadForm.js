@@ -73,7 +73,7 @@ const AddShoulderpadForm = props => {
                     type="text"
                     name="shoulderpadNumber"
                     value={shoulderpadNumber}
-                    placeholder="Shoulder Pad Number (must be unique)..."
+                    placeholder="Shoulder Pad Number..."
                     onChange={e => setShoulderpadNumber(e.target.value)}
                     minLength={2}
                 />

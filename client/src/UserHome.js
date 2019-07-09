@@ -279,7 +279,8 @@ const UserHome = props => {
             display: true
         },
         animation: {
-            animateScale: true
+            animateScale: true,
+            duration: 3500
         },
         maintainAspectRatio: true
     }

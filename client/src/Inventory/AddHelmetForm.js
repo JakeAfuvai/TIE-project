@@ -73,7 +73,7 @@ const AddHelmetForm = props => {
                     type="text"
                     name="helmetNumber"
                     value={helmetNumber}
-                    placeholder="Helmet Number (must be unique)..."
+                    placeholder="Helmet Number..."
                     onChange={e => setHelmetNumber(e.target.value)}
                     minLength={2}
                 />
