@@ -25,12 +25,6 @@ export class AppContextProvider extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     this.getPlayers()
-    //     this.getHelmets()
-    //     this.getShoulderpads()
-    // }
-
     getPlayers = () => {
         return tieAxios.get("/api/player")
             .then(response => {
@@ -90,75 +84,33 @@ export class AppContextProvider extends Component {
     }
     getPlayerCardInfo = playerId => {
         const foundPlayer = this.state.players.find(player => player._id === playerId)
-        console.log(foundPlayer.showModal, foundPlayer._id)
         foundPlayer.showModal = !foundPlayer.showModal
-        console.log(foundPlayer.showModal, foundPlayer._id)
         this.setState({ player: foundPlayer })
-
-        // const updateShowModal = {
-        //     showModal: true
-        // }
-        // this.editPlayer(playerId, updateShowModal)
     }
     closePlayerCardInfo = playerId => {
         const foundPlayer = this.state.players.find(player => player._id === playerId)
-        console.log(foundPlayer.showModal, foundPlayer._id)
         foundPlayer.showModal = !foundPlayer.showModal
-        console.log(foundPlayer.showModal, foundPlayer._id)
         this.setState({ player: {} })
-
-        // const updateShowModal = {
-        //     showModal: false
-        // }
-        // this.editPlayer(playerId, updateShowModal)
     }
     getHelmetAssignCard = playerId => {
         const foundPlayer = this.state.players.find(player => player._id === playerId)
-        console.log(foundPlayer.showHelmetModal, foundPlayer._id)
         foundPlayer.showHelmetModal = !foundPlayer.showHelmetModal
-        console.log(foundPlayer.showHelmetModal, foundPlayer._id)
         this.setState({ player: foundPlayer })
-
-        // const updateShowHelmetModal = {
-        //     showHelmetModal: true
-        // }
-        // this.editPlayer(playerId, updateShowHelmetModal)
     }
     closeHelmetAssignCard = playerId => {
         const foundPlayer = this.state.players.find(player => player._id === playerId)
-        console.log(foundPlayer.showHelmetModal, foundPlayer._id)
         foundPlayer.showHelmetModal = !foundPlayer.showHelmetModal
-        console.log(foundPlayer.showHelmetModal, foundPlayer._id)
         this.setState({ player: {} })
-
-        // const updateShowHelmetModal = {
-        //     showHelmetModal: false
-        // }
-        // this.editPlayer(playerId, updateShowHelmetModal)
     }
     getShoulderpadAssignCard = playerId => {
         const foundPlayer = this.state.players.find(player => player._id === playerId)
-        console.log(foundPlayer.showShoulderpadModal, foundPlayer._id)
         foundPlayer.showShoulderpadModal = !foundPlayer.showShoulderpadModal
-        console.log(foundPlayer.showShoulderpadModal, foundPlayer._id)
         this.setState({ player: foundPlayer })
-
-        // const updateShowShoulderpadModal = {
-        //     showShoulderpadModal: true
-        // }
-        // this.editPlayer(playerId, updateShowShoulderpadModal)
     }
     closeShoulderpadAssignCard = playerId => {
         const foundPlayer = this.state.players.find(player => player._id === playerId)
-        console.log(foundPlayer.showShoulderpadModal, foundPlayer._id)
         foundPlayer.showShoulderpadModal = !foundPlayer.showShoulderpadModal
-        console.log(foundPlayer.showShoulderpadModal, foundPlayer._id)
         this.setState({ player: {} })
-
-        // const updateShowShoulderpadModal = {
-        //     showShoulderpadModal: false
-        // }
-        // this.editPlayer(playerId, updateShowShoulderpadModal)
     }
     getHelmet = helmetId => {
         return tieAxios.get(`/api/helmet/${helmetId}`)
@@ -176,7 +128,6 @@ export class AppContextProvider extends Component {
     }
 
     editPlayer = (playerId, player) => {
-        console.log("fired", playerId, player)
         return tieAxios.put(`/api/player/${playerId}`, player)
             .then(response => {
                 this.setState(prevState => {
@@ -189,7 +140,6 @@ export class AppContextProvider extends Component {
             })
     }
     editHelmet = (helmetId, helmet) => {
-        console.log("fired", helmetId, helmet)
         return tieAxios.put(`/api/helmet/${helmetId}`, helmet)
             .then(response => {
                 this.setState(prevState => {

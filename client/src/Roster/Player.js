@@ -86,7 +86,7 @@ const Player = props => {
         const helmetArray = helmetString.split(" ")
         const [helmetId, helmetMake, helmetNumber, helmetSize] = helmetArray
         const updatedPlayer = {
-                helmet: `${helmetMake} ${helmetNumber} ${helmetSize}`
+                helmet: `${helmetMake} ${helmetNumber} ${helmetSize} ${helmetId}`
         }
         props.editPlayer(playerId, updatedPlayer)
         props.getPlayers()
@@ -104,7 +104,7 @@ const Player = props => {
         const shoulderPadArray = shoulderPadString.split(" ")
         const [shoulderPadId, shoulderPadMake, shoulderPadNumber, shoulderPadSize] = shoulderPadArray
         const updatedPlayer = {
-                shoulderpads: `${shoulderPadMake} ${shoulderPadNumber} ${shoulderPadSize}`
+                shoulderpads: `${shoulderPadMake} ${shoulderPadNumber} ${shoulderPadSize} ${shoulderPadId}`
         }
         props.editPlayer(playerId, updatedPlayer)
         props.getPlayers()
@@ -119,8 +119,8 @@ const Player = props => {
     }
     const handleUnassignHelmet = (playerId, playerSP, helmetString) => {
         const helmetArray = helmetString.split(" ")
-        const [helmetMake, helmetNumber, helmetSize] = helmetArray
-        const foundHelmet = props.stateHelmets.find(helmet => helmet.make === helmetMake && helmet.helmetNumber === helmetNumber && helmet.size === helmetSize)
+        const [helmetMake, helmetNumber, helmetSize, helmetId] = helmetArray
+        const foundHelmet = props.stateHelmets.find(helmet => helmet._id === helmetId)
         const updatedPlayer = {
                 helmet: "No Helmet Assigned"
         }
@@ -136,8 +136,8 @@ const Player = props => {
     }
     const handleUnassignShoulderpad = (playerId, playerHelmet, shoulderpadString) => {
         const shoulderpadArray = shoulderpadString.split(" ")
-        const [shoulderpadMake, shoulderpadNumber, shoulderpadSize] = shoulderpadArray
-        const foundShoulderpad = props.stateShoulderpads.find(shoulderpad => shoulderpad.make === shoulderpadMake && shoulderpad.shoulderpadNumber === shoulderpadNumber && shoulderpad.size === shoulderpadSize)
+        const [shoulderpadMake, shoulderpadNumber, shoulderpadSize, shoulderpadId] = shoulderpadArray
+        const foundShoulderpad = props.stateShoulderpads.find(shoulderpad => shoulderpad._id === shoulderpadId)
         const updatedPlayer = {
                 shoulderpads: "No Shoulderpads Assigned"
         }

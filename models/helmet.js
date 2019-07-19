@@ -17,7 +17,6 @@ const helmetSchema = new Schema({
     helmetNumber: {
         type: String,
         required: true,
-        unique: true
     },
     assigned: {
         type: Boolean,

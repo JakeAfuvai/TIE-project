@@ -21,7 +21,7 @@ const UserHome = props => {
     // Players by Grade data
     const seniors = props.players.filter(player=>player.grade==="Senior").length
     const juniors = props.players.filter(player=>player.grade==="Junior").length
-    const sophomores = props.players.filter(player=>player.grade==="Sophomores").length
+    const sophomores = props.players.filter(player=>player.grade==="Sophomore").length
     const freshman = props.players.filter(player=>player.grade==="Freshman").length
     const dataPlayersByGrade = {
         labels: ["Seniors", "Juniors", "Sophomores", "Freshmen"],

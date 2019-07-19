@@ -17,7 +17,6 @@ const shoulderpadSchema = new Schema({
     shoulderpadNumber: {
         type: String,
         required: true,
-        unique: true
     },
     assigned: {
         type: Boolean,
