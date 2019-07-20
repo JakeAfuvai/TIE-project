@@ -4,15 +4,18 @@ require("dotenv").config()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
 const expressJwt = require("express-jwt")
+const secret = process.env.SECRET || "ow now brown cow"
 const PORT = process.env.PORT || 5000
+const path = require("path")
 
 app.use(morgan("dev"))
 app.use(express.json())
-app.use("/api", expressJwt({ secret: process.env.SECRET }))
+app.use("/api", expressJwt({ secret: secret }))
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 //connect to db
 mongoose.set("useCreateIndex", true)
-mongoose.connect("mongodb://localhost:27017/tie-project",
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/tie-project",
     {
         useNewUrlParser: true,
         useFindAndModify: false,
@@ -35,6 +38,10 @@ app.use((err, req, res, next) => {
     }
     return res.send({ message: err.message })
 })
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(PORT, () => {
     console.log(`Starting server on port ${PORT}`)
